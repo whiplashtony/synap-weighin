@@ -5,6 +5,8 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    # add league views in leader board
+
   end
 
   def create

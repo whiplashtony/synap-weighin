@@ -18,7 +18,7 @@ class PeopleController < ApplicationController
 
   private
   def person_params
-    params.required(:person).permit([:name])
+    params.required(:person).permit([:name, :league_id])
   end
 
   def checkin_params
