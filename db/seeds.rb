@@ -9,7 +9,8 @@
 require 'csv'
 
 CSV.foreach('participants.csv', :headers => true, :col_sep => ',') do |row|
-  Person.find_or_create_by(:name => row[0])
+  League.find_or_create_by(:name => row[2])
+  Person.find_or_create_by(:name => row[0], :league_id => League.find_by_name(row[2]).id)
   Event.find_or_create_by(:name => row[1], :created_at => row[3])
 end
 

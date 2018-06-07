@@ -3,7 +3,7 @@ class Person < ActiveRecord::Base
   has_many :checkins
   has_many :user_person_joins
   has_many :users, through: :user_person_joins
-  belongs :league
+  belongs_to :league
 
   def up_by(event=nil)
     return attributes['up_by'] unless event
