@@ -6,6 +6,8 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     # add league views in leader board
+    @leagues = League.all
+    @people = Person.all.order('up_by ASC')
 
   end
 

@@ -1,6 +1,6 @@
 %h2
   #{@event.name}
-- @event.people.each_with_index do |person, index|
+- @event.people.sort_by{|p| p.up_by || -1000 }.reverse.each_with_index do |person, index|
   %table
     %tr
       %td{class: 'ordinal'}= index
@@ -8,6 +8,21 @@
       - if person.league.present?
         %td{class: "text-left"}= person.league.name
       %td{class: "text-left weight"}=person.up_by(@event)
+  %br
+%br
+%h2
+  Leagues
+%br
+%league.name
+- @leagues.each_with_index do |league, index|
+  %table
+    %tr
+      %td{class: "text-left"}= league.name
+      - @people.where(:league_id => league.id).sort_by{|p| p.up_by || -1000 }.reverse.each_with_index do |person, index|
+        %table
+          %tr
+            %td{class: "text-left"}= person.name
+            %td{class: "text-left weight"}=person.up_by(@event)
   %br
 %br
 %br
