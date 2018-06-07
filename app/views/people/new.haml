@@ -6,6 +6,8 @@
     %br
     = f.text_field :name, { class: "form-control" }
     %p
+    = f.label :league
+    %br
     = f.collection_select(:league_id, League.all, :id, :name, include_blank: true, class: 'input-block-level')
     %br
     = f.label :weight
